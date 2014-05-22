@@ -158,7 +158,9 @@ protected void onCreate(Bundle savedInstanceState) {
   ..
 
   /*Activation of MrnManager class/  
-  MrnManager.activate (this, MRN_APP_KEY, MRN_SECRET, true);
+  boolean debugging = true;
+  boolean useVirtualNumber = true;
+  MrnManager.activate(this, MRN_APP_KEY, MRN_SECRET, debugging, useVirtualNumber);
 
      ..
    }
