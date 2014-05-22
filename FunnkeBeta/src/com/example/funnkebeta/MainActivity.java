@@ -20,7 +20,10 @@ public class MainActivity extends Activity {
 		// *******************************************
 		// * Activate MRN Manager                    *
 		// *******************************************
-		MrnManager.activate(this, MRN_APP_KEY, MRN_SECRET, true);
+		boolean debugging = true;
+		boolean useVirtualNumber = true;
+		
+		MrnManager.activate(this, MRN_APP_KEY, MRN_SECRET, debugging, useVirtualNumber);
 		
 		// create a button for launching offerwall
 		Button btnOpen = (Button) findViewById(R.id.btn_open);
