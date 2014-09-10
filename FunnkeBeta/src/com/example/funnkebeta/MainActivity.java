@@ -9,8 +9,13 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 
 public class MainActivity extends Activity {
-	private String MRN_APP_KEY = "93CFAB5A70FA492E84CE47770EF040D6";
-	private String MRN_SECRET = "151426858EFF4824AE92102E6ECF2A4D";
+	
+	/**
+	 * Update following two constants with values assigned by Funnke
+	 * Partner Portal for your app account.
+	 */
+	private String FUNNKE_APP_KEY = "651AACB845BC4BD2BC3F462D203250BF";
+	private String FUNNKE_SECRET = "CD5E2A407C46489C98AF439A4EE5A927";
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -23,7 +28,7 @@ public class MainActivity extends Activity {
 		boolean debugging = true;
 		boolean useVirtualNumber = true;
 		
-		MrnManager.activate(this, MRN_APP_KEY, MRN_SECRET, debugging, useVirtualNumber);
+		MrnManager.activate(this, FUNNKE_APP_KEY, FUNNKE_SECRET, debugging, useVirtualNumber);
 		
 		// create a button for launching offerwall
 		Button btnOpen = (Button) findViewById(R.id.btn_open);
