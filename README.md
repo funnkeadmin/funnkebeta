@@ -26,13 +26,13 @@ In order to integrate the SDK, you must complete the following prerequisites:
 
 
 
-1. Click Browse… next to the “From” directory field to locate ``` mrn-0.9.0.jar ``` from the downloaded SDK files.   
-1. Click Browse… next to the “From” directory field to locate ``` age-1.1.5.jar ``` from the downloaded SDK files.  
+1. Click Browse… next to the “From” directory field to locate ``` mrn-0.9.5.jar ``` from the downloaded SDK files.   
+1. Click Browse… next to the “From” directory field to locate ``` age-1.1.7.jar ``` from the downloaded SDK files.  
 1. Click Browse… next to the “From” directory field to locate ``` libGoogleAnalytics.jar ``` from the downloaded SDK files. If you already include the ``` libGoogleAnalytics.jar ``` library in your project you do not have to add it again  
 1. Click Browse… next to the “Into folder” field to select a location for the files.
 1. Click Finish and the *.jar files will appear in your Eclipse project window.  
-1. Right-click on the ``` mrn-0.9.0.jar ```and select “Build Path...Add to Build Path”.  
-1. Repeat step 8 for ``` age-1.1.5.jar ``` and ``` libGoogleAnalytics.jar ```.
+1. Right-click on the ``` mrn-0.9.5.jar ```and select “Build Path...Add to Build Path”.  
+1. Repeat step 8 for ``` age-1.1.7.jar ``` and ``` libGoogleAnalytics.jar ```.
 
 
 
