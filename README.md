@@ -254,3 +254,64 @@ Below is an example of the JSON HTTP POST body
 "appKey":"93CFAB5A70FA492E84CE47770EF040D6"
 }
 ```
+
+For those apps without the ability to integrate using our webhook we have developed an utility service that enables apps to use the SDK to query for pending rewards.
+
+To enable this service you will need to provision the callback URL for your app in the web portal with the following URL http://rewardlog.funnke.com/funnkerewardmngr/api/rewards/
+
+Once this is set up you will be able to use the SDK to query for pending users rewards.
+
+
+#### Required Update 6: Reward users
+
+Is recommended that you modify your app to reward users on app start, awake and when offer wall is closed.
+
+App must use the SDK to get a list of pending rewards and iterate over the list to update the user balance with the appropriate number of your currency.  Once the reward has been redeemed the app must update the reward status to avoid rewarding the user twice for the same action.
+
+Below a sample code of this process executed when the offer wall is closed.
+
+``` 
+if(MrnManager.getInstance().openOfferWall())
+{
+	Map<Integer, Integer> pendingRewards = MrnManager.getInstance().getPendingRewards();
+	Iterator it = pendingRewards.entrySet().iterator();     
+	while(it.hasNext()) {
+		Map.Entry reward = (Map.Entry)it.next();
+		Integer pointsToReward = (Integer) reward.getValue();
+		//Add this point/coins to the user balance
+		MrnManager.getInstance().completeReward((Integer) reward.getKey());
+	}
+	
+}				
+```
+## UNITY 3D Plugin
+
+We developed Unity3D plugin to provide an easy way to access the SDK functionality from Unity3D code.  It works pretty much like the native SDK underneath it, but thanks to Unity3D virtues this plugin really simplifies the setup and initialization.
+
+### Prerequisites
+In order to use the plugin, you must complete the following prerequisites:
+ 1. Have created an account at funnke.com
+ 1. Have registered an application for that account at http://partners.funnke.com
+ 1. Have a uniquely generated Application ID and Secret Key for your application
+ 1. Downloaded a copy of the plugin package available https://github.com/funnkeadmin/funnkebeta/blob/master/unityplugin/FunnkePlugin.unitypackage
+
+### Steps to Follow
+ 1. Import the package to your project.
+ 1. Once imported you will be able to drag a prefab object called FunnkeManager, right into your scene's hierarchy.
+ 1. The prefab requires the Application ID and Secret Key provided by the Funnke web portal.  Enter your app keys or use these test keys:  App Key: 1B634D952BED4D64849A15DB4E072B3F Secret Key EF8FAA5CADBE4537B1F0EBA3611B3BB4
+ ![ScreenShot](https://raw.github.com/funnkeadmin/funnkebeta/master/images/FunnkeUnity.png)
+ 1. And that's it, the FunnkeManager initializes it self at run time and creates a session, you just need to call the FunnkeManager methods as needed.
+
+```
+FunnkePlugin.Instance.OpenOfferWall();
+
+
+Dictionary<int, int> pendingsRewards = FunnkePlugin.Instance.GetPendingRewards();
+foreach (KeyValuePair<int, int> reward in pendingsRewards)
+{
+     //Award points to user
+     FunnkePlugin.Instance.CompleteReward(reward.Key);
+}
+
+
+```
