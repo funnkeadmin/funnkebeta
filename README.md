@@ -304,14 +304,10 @@ In order to use the plugin, you must complete the following prerequisites:
 
 ```
 FunnkePlugin.Instance.OpenOfferWall();
-
-
-Dictionary<int, int> pendingsRewards = FunnkePlugin.Instance.GetPendingRewards();
-foreach (KeyValuePair<int, int> reward in pendingsRewards)
+FunnkePlugin.Reward[] rewards = FunnkePlugin.Instance.GetPendingRewards();
+foreach (FunnkePlugin.Reward reward in rewards)
 {
      //Award points to user
      FunnkePlugin.Instance.CompleteReward(reward.Key);
 }
-
-
 ```
